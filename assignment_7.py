@@ -155,5 +155,91 @@ def digit_count(n: int) -> int:
         count += 1
     return count
 
-print(digit_count(123))
-print(digit_count(4567))
+# print(digit_count(123))
+# print(digit_count(4567))
+
+def is_power_of_two(n: int) -> bool:
+    if n <= 0:
+        return False
+    while n % 2 == 0:
+        n //= 2
+    return n == 1
+
+# print(is_power_of_two(8))
+
+def sum_of_cubes(n: int) -> int:
+    return sum(i**3 for i in range(1, n + 1))
+
+# print(sum_of_cubes(3))
+
+def is_perfect_square(n: int) -> bool:
+    root = n ** 0.5
+    return root.is_integer()
+
+# print(is_perfect_square(9))
+
+def is_armstrong_number(n: int) -> bool:
+    num_digits = len(str(n))
+    digit_count = sum(int(digit) ** num_digits for digit in str(n))
+    return digit_count == n
+
+# print(is_armstrong_number(153))
+
+def count_substrings(s: str, subs: str) -> int:
+    count = 0
+    for i in range(len(s) - len(subs) + 1):
+        if s[i:i + len(subs)] == subs:
+            count += 1
+    return count
+
+# print(count_substrings("ababab", "ab"))
+
+import math 
+
+def is_prime(num):
+    if num <= 1:
+        return False
+    if num == 2:
+        return True
+    if num % 2 == 0:
+        return False
+    max_divisor = math.isqrt(num)
+    for d in range(3, max_divisor +1, 2):
+        if nums % d == 0:
+            return False
+    return True
+
+def find_smallest_divisor(n: int) -> int:
+    for divisor in range(2, n + 1):
+        if n % divisor == 0 and is_prime(divisor):
+            return divisor
+        
+
+# print(find_smallest_divisor(21))
+    
+def check_divisible_by_any(n: int, divisors: str) -> bool:
+    divisor_list = map(int, divisors.split())
+    for divisor in divisor_list:
+        if n % divisor == 0:
+            return True
+    return False
+
+# print(check_divisible_by_any(24, "2 3 5"))
+
+def find_nth_root(x: float, n: int) -> float:
+    root = x ** (1/n)
+    return round(root, 3)
+# print(find_nth_root(8, 3))
+
+def collatz_sequence_length(n: int) -> int:
+    steps = 0
+    while n != 1:
+        if n % 2 == 0:
+            n //= 2
+        else:
+            n = 3 * n + 1
+        steps += 1
+    return steps
+
+print(collatz_sequence_length(6))
+
